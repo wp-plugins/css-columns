@@ -5,7 +5,7 @@ Plugin URI: https://github.com/redwerks/css-columns
 Description: Provides a [columns] shortcode that gives a secion of post content multiple columns using css3's column properties.
 Author: Redwerks
 Author URI: http://redwerks.org/
-Version: 0.9.1
+Version: 0.9.2
 License: GPL2+
 
 Copyright © 2012 — Redwerks Systems Inc. (http://redwerks.org/)
@@ -50,12 +50,10 @@ function css_columns_shortcode( $params, $content = null ) {
 		return $content;
 	}
 
-	$minWidth = ($count + $empty) * 250;
-
 	$id = str_replace('.', '', uniqid('column-', true));
 
 	$html = "<style scoped>\n";
-	$html .= "@media screen and (min-width: {$minWidth}px) {\n";
+	$html .= "@media screen and (min-width: 420px) {\n";
 	$html .= "	#$id {\n";
 	if ( $count > 1 ) {
 		$html .= "		-moz-column-count: $count; -webkit-column-count: $count; column-count: $count;\n";
